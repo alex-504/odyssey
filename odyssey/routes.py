@@ -8,18 +8,10 @@ import socket
 # Define the blueprint 
 main = Blueprint('main', __name__)
 
-# API key for Hosted-Graphite
-api_key = os.getenv('HOSTED_GRAPHITE_API_KEY')
-headers = {"Authorization": f"Bearer {api_key}"}
-
-# Ensure API key is present
-if not api_key:
-    raise ValueError("HOSTED_GRAPHITE_API_KEY is not set in environment variables")
 
 # Helper function to send metrics
 import socket
 
-api_key = os.getenv('HOSTED_GRAPHITE_API_KEY')
 
 def send_metric(metric_name, value):
     try:
@@ -51,7 +43,7 @@ def get_data():
     response = requests.get('https://official-joke-api.appspot.com/jokes/programming/random')
     joke = response.json()[0]
 
-    # Calculate response duration
+    # Calculate response duration 
     duration = time.time() - start_time
 
     # Send metrics
